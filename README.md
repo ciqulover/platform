@@ -1,42 +1,42 @@
 ### A Survey Platform
-####一个前端问卷调查框架
+### 一个前端问卷调查框架
 
 ##### 主要用到的东西：
 * vue.js
 * webpack
 * localStore
-* ECMA2015,sass等
+* ECMAScript2015,SASS等
 
-##### [demo]()
+##### [demo](http://115.28.90.175:8090/)
 
 ##### 本地测试
-需要node与npm支持
+需要node环境，确保已经安装node.js与npm
 
-克隆远程库
-``` shell
+1.克隆远程库
+``` 
 git clone https://github.com/ycwalker/platform.git
 ```
-移动到plateform目录下 
+2.移动到plateform目录下 
 
-``` bash
+``` 
 cd plateform
 ```
 
-安装依赖
+3.安装依赖
 ``` 
 npm install
 ```
 
-webpack打包生成
-```bash
+4.webpack打包生成
+```
 npm run generate
 ```
 
-上一部编译完成，开启webpack server服务器
+5.等上一部编译完成，开启webpack server服务器
 ```
 npm run start
 ```
-如果一切正常，打开localhost:8080，即可进入登陆页面
+6.如果一切正常，打开localhost:8080，即可进入登陆页面
 
 默认内置账户 ycwalker , 密码 111
 
