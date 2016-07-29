@@ -14,7 +14,7 @@
 
 克隆远程库
 ``` shell
-git clone https://github.com/ycwalker/plateform.git
+git clone https://github.com/ycwalker/platform.git
 ```
 移动到plateform目录下 
 
