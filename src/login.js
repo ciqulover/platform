@@ -2,12 +2,13 @@ require('./style.scss')
 
 var Vue = require('vue')
     , verify = require('./verify.js')
-    , users = JSON.parse(localStorage.users)
+
 
 if (!localStorage.users) {
     require('./dataBase.js')
 }
 
+var users = JSON.parse(localStorage.users)
 function setCookie(name) {
     var hostName = location.hostname
     var dt = Date.parse(new Date())

@@ -2,11 +2,10 @@
   "name": "plateform",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "s": "webpack-dev-server --inline --progress --color --hot",
-    "w": "webpack --progress --color --watch"
+    "start": "webpack-dev-server",
+    "generate": "webpack --progress --color"
   },
   "author": "ycwalker",
   "license": "ISC",

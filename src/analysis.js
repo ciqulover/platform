@@ -26,7 +26,7 @@ module.exports = function (qnId) {
                 data.push({name: item, value: 0})
                 legend.data.push(item)
             })
-            obj.title = {text: qns[qnId].qs[i].describe, x: 'center'}
+            obj.title = {text: qns[qnId].qs[i].describe, x: 'right'}
             obj.legend = legend
             if (qns[qnId].qs[i].type == 'radio') {
                 data.forEach(function (item1) {
