@@ -34,7 +34,7 @@ npm run generate
 
 上一部编译完成，开启webpack server服务器
 ```
-mpm run start
+npm run start
 ```
 如果一切正常，打开localhost:8080，即可进入登陆页面
 
