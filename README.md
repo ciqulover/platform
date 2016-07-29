@@ -13,27 +13,27 @@
 需要node环境，确保已经安装node.js与npm
 
 1.克隆远程库
-``` 
+``` bash
 git clone https://github.com/ycwalker/platform.git
 ```
 2.移动到plateform目录下 
 
-``` 
+``` bash
 cd plateform
 ```
 
 3.安装依赖
-``` 
+``` bash
 npm install
 ```
 
 4.webpack打包生成
-```
+``` bash
 npm run generate
 ```
 
 5.等上一部编译完成，开启webpack server服务器
-```
+``` bash
 npm run start
 ```
 6.如果一切正常，打开localhost:8080，即可进入登陆页面
