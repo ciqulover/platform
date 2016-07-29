@@ -14,7 +14,7 @@
 
 克隆远程库
 ``` shell
-git clone https://github.com/ycwalker/plateform
+git clone https://github.com/ycwalker/plateform.git
 ```
 移动到plateform目录下 
 
@@ -34,7 +34,7 @@ npm run generate
 
 上一部编译完成，开启webpack server服务器
 ```
-mpm run start //
+mpm run start
 ```
 如果一切正常，打开localhost:8080，即可进入登陆页面
 
