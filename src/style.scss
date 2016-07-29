@@ -1,0 +1,408 @@
+@import "normalize.css";
+
+$baseColor1: #FCFAEF;
+$baseColor2: #E2E0A5;
+$baseColor3: #D3504A;
+$baseColor4: #A63636;
+
+$fontLucy: 'Lucida Console', Monaco, monospace, sans-serif;
+$fontComic: 'Comic Sans MS', cursive, sans-serif;
+$fontArial: 'Arial Narrow', sans-serif;
+$fontYaHei: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontHelvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$headerHeight: 50px;
+
+$tableWidth: 20px 28% 8% 13% 13% 320px;
+
+@mixin defaultButton($bgColor1:$baseColor3,$bgColor2:$baseColor1) {
+  background-color: $bgColor1;
+  color: $bgColor2;
+  border: 1px solid $bgColor1;
+  text-align: center;
+  transition: 0.4s all;
+  border-radius: 2px;
+  outline: none;
+  &:hover {
+    background-color: $bgColor2;
+    color: $bgColor1;
+    border: 1px solid $bgColor2;
+  }
+}
+
+@mixin defaultInput($width:16px,$height:16px) {
+  width: $width;
+  height: $height;
+  vertical-align: middle;
+  padding: 0 10px;
+  margin: 6px 10px;
+  border: none;
+  outline: none;
+}
+
+@mixin defaultInputText($width:300px,$height:24px) {
+  @include defaultInput($width, $height);
+  box-shadow: 0 0 4px lighten($baseColor3, 30%);
+  font-size: $height * 2 / 3;
+  line-height: $height;
+  &:focus {
+    box-shadow: 0 0 6px 2px lighten($baseColor3, 30%);
+  }
+}
+
+body {
+  background-color: $baseColor1;
+}
+
+header {
+  height: $headerHeight;
+  background-color: $baseColor3;
+  font-family: $fontLucy;
+  position: relative;
+  .headerReturn {
+    background-color: darken($baseColor3, 0%);
+    height: $headerHeight;
+    line-height: $headerHeight;
+    width: 140px;
+    text-align: center;
+    margin: 0 0 0 100px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.4s all;
+    display: inline-block;
+    &:hover {
+      background-color: darken($baseColor3, 4%);
+    }
+  }
+  .headerUser {
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    height: $headerHeight;
+    span {
+      line-height: $headerHeight;
+      color: $baseColor1;
+      cursor: default;
+    }
+    button {
+      @include defaultButton();
+    }
+  }
+}
+
+section {
+  background-color: darken($baseColor1, 4%);
+  box-shadow: 0 0 4px lighten($baseColor3, 30%);
+  width: 80%;
+  min-width: 970px;
+  margin: 80px auto;
+}
+
+table.tableList {
+  font-family: $fontYaHei;
+  width: 100%;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  tr {
+    height: 50px;
+    th {
+      color: $baseColor4;
+      font-family: $fontLucy;
+      font-weight: 200;
+      cursor: default;
+      button {
+        margin-left: 20px;
+      }
+    }
+    td {
+      color: $baseColor3;
+      font-weight: 200;
+    }
+    td:nth-of-type(2) {
+      text-align: left;
+    }
+    @for $i from 1 through 6 {
+      th:nth-of-type(#{$i}), td:nth-of-type(#{$i}) {
+        width: nth($tableWidth, $i)
+      }
+    }
+    button {
+      @include defaultButton();
+      width: 60px;
+      margin: 0 4px;
+    }
+  }
+}
+
+.popLayer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9;
+  .container {
+    background-color: $baseColor3;
+    z-index: 99;
+    position: absolute;
+    width: 450px;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -200px;
+    border-radius: 10px;
+    p {
+      &:first-of-type {
+        color: $baseColor1;
+        font-family: $fontComic;
+        text-align: center;
+        margin: 40px;
+        font-size: 22px;
+        font-weight: 200;
+        cursor: default;
+      }
+      &:last-of-type {
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        button {
+          @include defaultButton($baseColor1, $baseColor3);
+          font-family: $fontYaHei;
+          width: 80px;
+          margin: 0 10px 0 0;
+        }
+      }
+    }
+  }
+}
+
+.mainEdit, .mainAnswer, .mainResult {
+  .qHeader {
+    font-family: $fontHelvetica;
+    color: $baseColor4;
+    text-align: center;
+    padding: 60px 0;
+    input {
+      @include defaultInputText(500px, 50px);
+      text-align: center;
+    }
+    span {
+      font-size: 34px;
+    }
+  }
+  ul.qBody {
+    list-style: none;
+    > li {
+      font-family: $fontYaHei;
+      color: $baseColor3;
+      font-weight: 200;
+      margin: 30px 0;
+      span {
+        &:nth-of-type(1) {
+          &:after {
+            width: 20px;
+            content: '';
+            display: inline-block;
+          }
+        }
+        &:nth-of-type(2) {
+          &:after {
+            width: 20px;
+            content: '';
+            display: inline-block;
+          }
+        }
+        &:nth-of-type(3) {
+          &:after {
+            content: '';
+            width: 20px;
+            display: inline-block;
+          }
+        }
+        &:nth-of-type(4) {
+          font-size: 20px;
+          display: block;
+          margin: 12px 30px;
+          font-weight: 500;
+          input {
+            @include defaultInputText(500px, 30px);
+            margin-bottom: 16px;
+          }
+          &:after {
+            content: '';
+            display: block;
+          }
+        }
+      }
+      > i {
+        cursor: pointer;
+        &:after {
+          content: '';
+          width: 20px;
+          display: inline-block;
+        }
+      }
+      ul {
+        list-style: none;
+        li {
+          input[type*='text'] {
+            @include defaultInputText();
+          }
+          input[type*='o'] {
+            @include defaultInput()
+          }
+          i:before {
+            vertical-align: middle;
+            cursor: pointer;
+            color: darken($baseColor2, 20%);
+          }
+          i:after {
+            content: '';
+            width: 6px;
+            display: inline-block;
+          }
+        }
+      }
+      textarea {
+        @include defaultInputText(500px, 120px);
+        font-size: 16px;
+        line-height: 1.4;
+        resize: none;
+        margin-left: 40px;
+      }
+    }
+  }
+  .qFooter {
+    font-family: $fontYaHei;
+    padding: 0 20px 20px 20px;
+    text-align: right;
+    .addQuestion {
+      text-align: center;
+      button {
+        @include defaultButton($baseColor1, $baseColor3);
+        border: 1px solid $baseColor3;
+        width: 160px;
+        height: 34px;
+        margin: 0 30px;
+      }
+    }
+    .addQuestionPanel {
+      @include defaultButton();
+      height: 40px;
+      text-align: center;
+      margin: 40px;
+      line-height: 40px;
+      cursor: pointer;
+
+    }
+    .setData {
+      text-align: left;
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: 100px;
+      width: 400px;
+      > span {
+        color: $baseColor3;
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+      }
+      > input {
+        @include defaultInputText();
+        color: $baseColor4;
+        height: 20px;
+        width: 40px;
+        margin: 0 2px;
+        line-height: 20px;
+      }
+    }
+    > button {
+      @include defaultButton($baseColor1, $baseColor3);
+      border: 1px solid $baseColor3;
+      margin-right: 20px;
+      width: 100px;
+      height: 30px;
+    }
+  }
+  .expand-transition {
+    transition: all 0.8s ease;
+    padding: 6px;
+  }
+  .expand-enter, .expand-leave {
+    height: 0;
+    padding: 0 6px;
+    opacity: 0;
+  }
+}
+
+.login {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  min-height: 500px;
+  .form {
+    background-color: $baseColor3;
+    box-shadow: 0 0 4px 2px lighten($baseColor4, 30%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 30px;
+    width: 500px;
+    margin: 100px auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    input {
+      @include defaultInputText();
+      color: $baseColor4;
+    }
+    button {
+      @include defaultButton($baseColor1, $baseColor3);
+    }
+    p {
+      color: $baseColor1;
+      font-family: $fontYaHei;
+      &:nth-of-type(1) {
+        text-align: center;
+        font-size: 24px;
+      }
+      &:nth-of-type(3) {
+        margin: 4px 0 0 10px;
+      }
+      &:nth-of-type(4) {
+        text-align: right;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+.mainResult {
+  ul {
+    li {
+      list-style: none;
+      margin: 0 auto;
+      width: 600px;
+      min-height: 400px;
+      .text {
+        margin: 30px auto;
+        h2 {
+          font-family: $fontYaHei;
+          font-weight: 300;
+          text-align: center;
+        }
+        p {
+          font-family: $fontLucy;
+          color: $baseColor4;
+        }
+      }
+    }
+  }
+}

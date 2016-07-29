@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body id="mainResult">
+<div class="popLayer" v-show="popLayer">
+    <div class="container">
+        <p>{{popLayerContent}}</p>
+        <p>
+            <button @click="ok(f)">OK</button>
+            <button @click="cancel" v-show="cancelVisible">Cancel</button>
+        </p>
+    </div>
+</div>
+<header>
+    <div class="headerReturn" @click="returnToList">
+        <i class="icon-home"></i>
+        <span>Return</span>
+    </div>
+    <div class="headerUser">
+            <span>
+                <i class="icon-user"></i>
+                {{user}}
+            </span>
+        <button @click="logOut"><i class="icon-signout"></i>Logout</button>
+    </div>
+</header>
+<section class="mainResult">
+    <div class="qHeader"><span>{{title}}</span></div>
+    <ul v-for="(i,inf) in info">
+        <li id="result{{i}}">
+            <div v-if="info.type===text?true:false" class="text">
+                <h2>{{inf.title}}</h2>
+                <p v-for="(q,data) in inf.data" track-by="$index">
+                    {{q+1}}.{{data}}
+                </p>
+            </div>
+        </li>
+    </ul>
+    <div class="qFooter">
+        <button @click="goBack">Go Back</button>
+    </div>
+</section>
+
+<script src="http://localhost:8080/result.js"></script>
+</body>
+</html>

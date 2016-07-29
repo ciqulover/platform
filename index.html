@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<header>
+</header>
+<section id="login" class="login">
+    <div class="form" @keyup.enter="login">
+        <p>{{state==='login'?'User Login':'Register'}}</p>
+        <p>
+            <span>User Name</span>
+            <br>
+            <input id="userName" type="text" name="userName" @keyup="inputFilter" v-model="userName">
+            <label for="userName"></label>
+            <br>
+            <span>Password</span>
+            <br>
+            <input id="password" type="password" v-model="password">
+            <label for="password"></label>
+            <br>
+            <span v-show="state!=='login'?true:false">Re-enter password</span>
+            <br v-show="state!=='login'?true:false">
+            <input id="rePassword" type="password" v-show="state!=='login'?true:false" v-model="rePassword">
+            <label for="rePassword" v-show="state!=='login'?true:false" ></label>
+        </p>
+        <p>
+            <button @click="login" v-show="state==='login'?true:false" >Login</button>
+            <button @click="affirmRegister" v-else>Register</button>
+        </p>
+        <p><span>No Account? Click</span> <button @click="register">Here</button> <span>To Register</span></p>
+    </div>
+</section>
+<footer></footer>
+<script src="http://localhost:8080/login.js"></script>
+</body>
+</html>

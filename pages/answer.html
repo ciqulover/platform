@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Answer</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body id="mainAnswer">
+<div class="popLayer" v-show="popLayer">
+    <div class="container">
+        <p>{{popLayerContent}}</p>
+        <p>
+            <button @click="ok(f)">OK</button>
+            <button @click="cancel" v-show="cancelVisible">Cancel</button>
+        </p>
+    </div>
+</div>
+<header>
+    <div class="headerReturn" @click="returnToList" v-if="user">
+        <i class="icon-home"></i>
+        <span>Return</span>
+    </div>
+    <div class="headerUser" v-if="user">
+            <span>
+                <i class="icon-user"></i>
+                {{user}}
+            </span>
+        <button @click="logOut"><i class="icon-signout"></i>Logout</button>
+    </div>
+</header>
+<section class="mainAnswer">
+    <div class="qHeader"><span>{{qn.title}}</span></div>
+    <ul class="qBody">
+        <li v-for="(i,q) in qn.qs" track-by="qid">
+            <span>{{i+1}}. </span>
+            <span v-if="q.type==='radio'">Single Choice</span>
+            <span v-if="q.type==='checkbox'">Multiple Choice</span>
+            <span v-if="q.type==='text'">Text</span>
+            <span><i v-if="q.necessary" class="icon-asterisk"></i></span>
+            <br :id="q.qid">
+            <span>{{q.describe}}</span>
+            <ul v-if="q.type!=='text'">
+                <li v-for="choice in q.choices">
+                    <input :type="q.type" :value="choice" v-model="ans[i]">
+                    <span>{{choice}}</span>
+                </li>
+            </ul>
+            <textarea v-else placeholder="Input Text Here..." v-model="ans[i]"></textarea>
+        </li>
+    </ul>
+    <div class="qFooter">
+        <button @click="save">Save</button>
+    </div>
+</section>
+<script src="http://localhost:8080/answer.js"></script>
+
+</body>
+</html>

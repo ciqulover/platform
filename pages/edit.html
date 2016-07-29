@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body id="mainEdit">
+<div class="popLayer" v-show="popLayer">
+    <div class="container">
+        <p>{{popLayerContent}}</p>
+        <p>
+            <button @click="ok(f)">OK</button>
+            <button @click="cancel" v-show="cancelVisible">Cancel</button>
+        </p>
+    </div>
+</div>
+<header>
+    <div class="headerReturn" @click="returnToList">
+        <i class="icon-home"></i>
+        <span>Return</span>
+    </div>
+    <div class="headerUser">
+            <span>
+                <i class="icon-user"></i>
+                {{user}}
+            </span>
+        <button @click="logOut"><i class="icon-signout"></i>Logout</button>
+    </div>
+</header>
+<section class="mainEdit">
+    <div class="qHeader"><input type="text" v-model="qn.title"></div>
+    <ul class="qBody">
+        <li v-for="(i,q) in qn.qs" track-by="qid" transition="expand">
+            <span>{{i+1}}. </span>
+            <span v-if="q.type==='radio'">Single Choice</span>
+            <span v-if="q.type==='checkbox'">Multiple Choice</span>
+            <span v-if="q.type==='text'">Text</span>
+            <span><input type="checkbox" v-model="q.necessary"> <i class="icon-asterisk"></i></span>
+            <i class="icon-double-angle-up" v-show="i!==0?true:false" @click="moveUp(i)"></i>
+            <i class="icon-double-angle-down" v-show="(i!==qn.qs.length-1)?true:false" @click="moveDown(i)"></i>
+            <i class="icon-copy" @click="copy(i)"></i>
+            <i class="icon-trash" @click="deleteQuestion(i)"></i>
+            <br :id="q.qid">
+            <span><input type="text" placeholder="describe question here" v-model="q.describe"></span>
+            <ul v-if="q.type!=='text'">
+                <li v-for="choice in q.choices" transition="expand" track-by="$index">
+                    <input disabled="disabled" :type="q.type" :name="i+1">
+                    <input type="text" placeholder="describe choice here" v-model="choice">
+                    <i class="icon-plus-sign" v-show="q.choices.length<10?true:false" @click="addChoice(i,$index)"></i>
+                    <i class="icon-minus-sign" v-show="q.choices.length!==1?true:false" @click="removeChoice(i,$index)"></i>
+                </li>
+            </ul>
+            <textarea v-else placeholder="Input Text Here..."></textarea>
+
+        </li>
+    </ul>
+    <div class="qFooter">
+        <div class="addQuestion" v-show="!addQuestionHide" transition="expand">
+            <button @click="addSingle">Single Choice</button>
+            <button @click="addMultiple">Multiple Choice</button>
+            <button @click="addText">Text</button>
+        </div>
+        <div class="addQuestionPanel" @click="addNewQuestion">Add</div>
+        <div class="setData">
+            <span>Please Input Release Time Span (Unit:Day) :</span>
+            <input type="text" placeholder="10" @keyup="inputFilter" v-model="timeSpan">
+        </div>
+        <button @click="save">Save</button>
+        <button @click="release">Release</button>
+    </div>
+</section>
+<script src="http://localhost:8080/edit.js"></script>
+</body>
+</html>

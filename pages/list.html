@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body id="mainList" >
+    <div class="popLayer" v-show="popLayer">
+        <div class="container">
+            <p>{{popLayerContent}}</p>
+            <p>
+                <button @click="ok(f)">OK</button>
+                <button @click="cancel" v-show="cancelVisible">Cancel</button>
+            </p>
+        </div>
+    </div>
+    <header>
+        <div class="headerReturn" @click="returnToList">
+            <i class="icon-home"></i>
+            <span>Return</span>
+        </div>
+        <div class="headerUser">
+            <span>
+                <i class="icon-user"></i>
+                {{user}}
+            </span>
+            <button @click="logOut"><i class="icon-signout"></i>Logout</button>
+        </div>
+    </header>
+    <section class="mainList">
+        <table class="tableList">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>State</th>
+                    <th>Begin</th>
+                    <th>End</th>
+                    <th>Operation<button @click="addNewQuestionnaire">New</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="qn in qns">
+                    <td><input type="checkbox" :value="$key" v-model="selectList"></td>
+                    <td>{{qn.title}}</td>
+                    <td>{{qn.state}}</td>
+                    <td>{{qn.start}}</td>
+                    <td>{{qn.end}}</td>
+                    <td>
+                        <button @click="edit($key)" v-show="qn.state==='Unreleased'?true:false">Edit</button>
+                        <button @click="deleteOne($key)">Delete</button>
+                        <button @click="fillIn($key)" v-show="qn.state!=='Finished'?true:false">Fill In</button>
+                        <button @click="result($key)">Result</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><input @click="selectAll" id="selectAll" v-model="checkedAll" type="checkbox"></td>
+                    <td>Select All <button class="tableButton" @click="deleteSome">Delete</button></td>
+                    <td colspan="4"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+    <script src="http://localhost:8080/list.js"></script>
+</body>
+</html>
