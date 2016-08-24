@@ -3,9 +3,6 @@
 
 ##### 主要用到的东西：
 * vue.js
-* webpack
-* localStore
-* ECMAScript2015,SASS等
 
 ## [Demo](http://115.28.90.175:8090/)  内置账号 ycwalker 密码 111
 
