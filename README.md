@@ -1,4 +1,5 @@
-# Deprecated 近日会重写
+# Deprecated 
+## 近日会以vue组件重写
 
 ### A Survey Platform
 ### 一个前端问卷调查框架
