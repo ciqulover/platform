@@ -1,5 +1,8 @@
+# Deprecated 近日会重写
+
 ### A Survey Platform
 ### 一个前端问卷调查框架
+
 
 ##### 主要用到的东西：
 * vue.js
