@@ -8,7 +8,7 @@
 ##### 主要用到的东西：
 * vue.js
 
-## [Demo](http://115.28.90.175:8090/)  内置账号 ycwalker 密码 111
+## [Demo](https://www.ycwalker.com/platform)  内置账号 ycwalker 密码 111
 
 ##### 本地测试
 需要node环境，确保已经安装node.js与npm
